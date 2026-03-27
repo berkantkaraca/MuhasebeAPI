@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="Core/MuhasebeAPI.Application/MuhasebeAPI.Application.csproj" />
+    <Project Path="Core/MuhasebeAPI.Domain/MuhasebeAPI.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="Infrastructure/MuhasebeAPI.Infrastructure/MuhasebeAPI.Infrastructure.csproj" />
+    <Project Path="Infrastructure/MuhasebeAPI.Persistence/MuhasebeAPI.Persistence.csproj" />
+    <Project Path="Infrastructure/MuhasebeAPI.Presentation/MuhasebeAPI.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/src/Presentation/">
+    <Project Path="MuhasebeAPI.WebAPI/MuhasebeAPI.WebAPI.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
