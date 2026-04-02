@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MuhasebeAPI.Persistence.Contexts;
+using MuhasebeAPI.Application;
+using MuhasebeAPI.Persistence;
 using MuhasebeAPI.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(AssemblyReference).Assembly);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(setup =>
 {
     var jwtSecuritySheme = new OpenApiSecurityScheme

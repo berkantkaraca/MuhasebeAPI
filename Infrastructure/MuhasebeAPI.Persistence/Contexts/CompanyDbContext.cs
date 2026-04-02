@@ -8,7 +8,7 @@ public sealed class CompanyDbContext : DbContext
 {
     private string ConnectionString = "";
 
-    public CompanyDbContext(string companyId, Company company = null)
+    public CompanyDbContext(Company company = null)
     {
         if (company != null)
         {
@@ -43,14 +43,13 @@ public sealed class CompanyDbContext : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssemblyReference).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ServiceRegistration).Assembly);
 
     public class CompanyDbContextFactory : IDesignTimeDbContextFactory<CompanyDbContext>
     {
         public CompanyDbContext CreateDbContext(string[] args)
         {
-            return new CompanyDbContext("");
+            return new CompanyDbContext();
         }
     }
-
 }
