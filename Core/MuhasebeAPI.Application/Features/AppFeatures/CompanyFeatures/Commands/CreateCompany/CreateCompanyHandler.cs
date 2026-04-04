@@ -15,7 +15,7 @@ public sealed class CreateCompanyHandler : IRequestHandler<CreateCompanyRequest,
 
     public async Task<CreateCompanyResponse> Handle(CreateCompanyRequest request, CancellationToken cancellationToken)
     {
-        Company? company = await _companyService.GetCompanyByName(request.Name);
+        Company? company = await _companyService.GetCompanyByName(request.Name ?? string.Empty);
 
         if (company != null) 
             throw new Exception("Bu şirket adı daha önce kullanılmış!");

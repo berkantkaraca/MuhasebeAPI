@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using MuhasebeAPI.Domain.Abstractions;
 using MuhasebeAPI.Domain.Entities.App;
 
 namespace MuhasebeAPI.Persistence.Contexts;
@@ -8,7 +9,7 @@ public sealed class CompanyDbContext : DbContext
 {
     private string ConnectionString = "";
 
-    public CompanyDbContext(Company company = null)
+    public CompanyDbContext(Company? company = null)
     {
         if (company != null)
         {
@@ -44,6 +45,23 @@ public sealed class CompanyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ServiceRegistration).Assembly);
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var datas = ChangeTracker.Entries<BaseEntity>();
+
+        foreach (var data in datas)
+        {
+            _ = data.State switch
+            {
+                EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
+                EntityState.Modified => data.Entity.UpdateDate = DateTime.UtcNow,
+                _ => DateTime.UtcNow
+            };
+        }
+
+        return base.SaveChangesAsync(cancellationToken);
+    }
 
     public class CompanyDbContextFactory : IDesignTimeDbContextFactory<CompanyDbContext>
     {

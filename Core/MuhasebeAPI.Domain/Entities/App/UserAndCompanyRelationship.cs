@@ -7,11 +7,11 @@ namespace MuhasebeAPI.Domain.Entities.App;
 public class UserAndCompanyRelationship : BaseEntity
 {
     [ForeignKey("AppUser")]
-    public string AppUserId { get; set; }
-    public AppUser AppUser { get; set; }
+    public string? AppUserId { get; set; }
+    public AppUser? AppUser { get; set; }
 
 
     [ForeignKey("Company")]
-    public string CompanyId { get; set; }
-    public Company Company { get; set; }
+    public string? CompanyId { get; set; }
+    public Company? Company { get; set; }
 }
