@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using MuhasebeAPI.Application;
+using MuhasebeAPI.Domain.Entities.App.Identity;
 using MuhasebeAPI.Persistence;
 using MuhasebeAPI.Presentation;
+using MuhasebeAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,7 @@ builder.Services.AddControllers()
 
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -55,5 +59,21 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scoped = app.Services.CreateScope())
+{
+    var userManager = scoped.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    if (!userManager.Users.Any())
+    {
+        userManager.CreateAsync(new AppUser
+        {
+            UserName = "bkaraca",
+            Email = "bkaraca@gmail.com",
+            Id = Guid.NewGuid().ToString(),
+            NameLastName = "Berkant Karaca",
+            RefreshToken = "dskflksdfjslkfj",
+        }, "Password12*").Wait();
+    }
+}
 
 app.Run();
