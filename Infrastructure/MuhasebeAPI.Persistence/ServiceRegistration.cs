@@ -32,6 +32,7 @@ public static class ServiceRegistration
 
         services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IUCAFService, UCAFService>();
+        services.AddScoped<IRoleService, RoleService>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IContextService, ContextService>();
