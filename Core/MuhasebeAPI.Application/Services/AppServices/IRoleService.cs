@@ -6,6 +6,7 @@ namespace MuhasebeAPI.Application.Services.AppServices;
 public interface IRoleService
 {
     Task AddAsync(CreateRoleCommandRequest request);
+    Task AddRangeAsync(IEnumerable<AppRole> roles);
     Task UpdateAsync(AppRole appRole);
     Task DeleteAsync(AppRole appRole);
     Task<IList<AppRole>> GetAllRolesAsync();

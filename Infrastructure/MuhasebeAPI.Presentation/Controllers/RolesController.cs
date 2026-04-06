@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateAllRoles;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.DeleteRole;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole;
@@ -18,6 +19,13 @@ public class RolesController : ApiController
     public async Task<IActionResult> CreateRole(CreateRoleCommandRequest request)
     {
         CreateRoleCommandResponse response = await _mediator.Send(request);
+        return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> CreateAllRoles()
+    {
+        CreateAllRolesCommandResponse response = await _mediator.Send(new CreateAllRolesCommandRequest());
         return Ok(response);
     }
 
