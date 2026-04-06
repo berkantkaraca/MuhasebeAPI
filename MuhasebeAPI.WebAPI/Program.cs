@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using MuhasebeAPI.Application;
 using MuhasebeAPI.Domain.Entities.App.Identity;
+using MuhasebeAPI.Infrastructure;
 using MuhasebeAPI.Persistence;
 using MuhasebeAPI.Presentation;
-using MuhasebeAPI.Infrastructure;
+using MuhasebeAPI.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

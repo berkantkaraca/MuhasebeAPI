@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MuhasebeAPI.Application.Abstractions;
+using MuhasebeAPI.Application.Exceptions;
 using MuhasebeAPI.Domain.Entities.App.Identity;
 
 
@@ -25,7 +26,7 @@ public class LoginHandler : IRequestHandler<LoginRequest, LoginResponse>
             .FirstOrDefaultAsync();
 
         if (user == null) 
-            throw new Exception("Kullanıcı bulunamadı!");
+            throw new NotFoundException("Kullanıcı bulunamadı!");
 
         var checkUser = await _userManager.CheckPasswordAsync(user, request.Password);
 
