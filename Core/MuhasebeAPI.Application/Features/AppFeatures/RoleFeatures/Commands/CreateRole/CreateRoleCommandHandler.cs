@@ -5,11 +5,11 @@ using MuhasebeAPI.Domain.Entities.App.Identity;
 
 namespace MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
 
-public sealed class CreateRoleHandler : ICommandHandler<CreateRoleCommandRequest, CreateRoleCommandResponse>
+public sealed class CreateRoleCommandHandler : ICommandHandler<CreateRoleCommandRequest, CreateRoleCommandResponse>
 {
     private readonly IRoleService _roleService;
 
-    public CreateRoleHandler(IRoleService roleService)
+    public CreateRoleCommandHandler(IRoleService roleService)
     {
         _roleService = roleService;
     }

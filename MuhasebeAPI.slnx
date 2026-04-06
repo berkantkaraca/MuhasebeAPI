@@ -12,5 +12,7 @@
   <Folder Name="/src/Presentation/">
     <Project Path="MuhasebeAPI.WebAPI/MuhasebeAPI.WebAPI.csproj" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="test/MuhasebeAPI.UnitTest/MuhasebeAPI.UnitTest.csproj" Id="58fe017b-3414-44e7-a6dd-093e3e349689" />
+  </Folder>
 </Solution>

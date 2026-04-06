@@ -12,16 +12,18 @@ namespace MuhasebeAPI.Persistence.Services.CompanyServices;
 public sealed class UCAFService : IUCAFService
 {
     private readonly IUCAFCommandRepository _commandRepository;
+    private readonly IUCAFQueryRepository _queryRepository;
     private readonly IContextService _contextService;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, IUnitOfWork unitOfWork, IMapper mapper)
+    public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, IUnitOfWork unitOfWork, IMapper mapper, IUCAFQueryRepository queryRepository)
     {
         _commandRepository = commandRepository;
         _contextService = contextService;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _queryRepository = queryRepository;
     }
 
     public async Task CreateUcafAsync(CreateUCAFCommandRequest request, CancellationToken cancellationToken)
@@ -36,4 +38,8 @@ public sealed class UCAFService : IUCAFService
         await _commandRepository.AddAsync(uniformChartOfAccount, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task<UniformChartOfAccount> GetByCode(string code) 
+        => (await _queryRepository.GetFirstByExpiression(p => p.Code == code))!;
 }

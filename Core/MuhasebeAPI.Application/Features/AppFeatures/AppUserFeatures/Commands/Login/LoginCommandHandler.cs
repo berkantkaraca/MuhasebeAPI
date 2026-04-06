@@ -7,7 +7,7 @@ using MuhasebeAPI.Application.Messaging.Command;
 using MuhasebeAPI.Domain.Entities.App.Identity;
 
 
-namespace MuhasebeAPI.Application.Features.AppFeatures.AppUserFeatures.Login;
+namespace MuhasebeAPI.Application.Features.AppFeatures.AppUserFeatures.Commands.Login;
 
 public class LoginCommandHandler : ICommandHandler<LoginCommandRequest, LoginCommandResponse>
 {
