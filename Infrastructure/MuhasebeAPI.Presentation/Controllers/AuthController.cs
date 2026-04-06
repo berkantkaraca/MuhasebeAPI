@@ -12,9 +12,9 @@ public class AuthController : ApiController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginCommandRequest request)
     {
-        LoginResponse response = await _mediator.Send(request);
+        LoginCommandResponse response = await _mediator.Send(request);
         return Ok(response);
     }
 }

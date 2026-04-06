@@ -23,7 +23,7 @@ public class CompanyService : ICompanyService
         _mapper = mapper;
     }
 
-    public async Task CreateCompany(CreateCompanyRequest request)
+    public async Task CreateCompany(CreateCompanyCommandRequest request)
     {
         Company company = _mapper.Map<Company>(request);
         company.Id = Guid.NewGuid().ToString();

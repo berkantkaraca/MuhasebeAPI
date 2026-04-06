@@ -55,6 +55,12 @@ public class ExceptionMiddleware
                 errors.Add(exception.Message);
                 break;
 
+            case ConflictException e:
+                statusCode = (int)HttpStatusCode.Conflict;
+                message = e.Message;
+                errors.Add("Mükerrer kayıt hatası.");
+                break;
+
             default:
                 errors.Add(exception.Message);
                 break;

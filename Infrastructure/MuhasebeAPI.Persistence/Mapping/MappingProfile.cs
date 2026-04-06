@@ -12,8 +12,8 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CreateCompanyRequest, Company>();
-        CreateMap<CreateUCAFRequest, UniformChartOfAccount>();
-        CreateMap<CreateRoleRequest, AppRole>();
+        CreateMap<CreateCompanyCommandRequest, Company>();
+        CreateMap<CreateUCAFCommandRequest, UniformChartOfAccount>();
+        CreateMap<CreateRoleCommandRequest, AppRole>();
     }
 }

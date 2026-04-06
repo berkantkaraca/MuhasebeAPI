@@ -2,7 +2,4 @@
 
 namespace MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Queries.GetAllRoles;
 
-public sealed class GetAllRolesResponse
-{
-    public IList<AppRole> Roles { get; set; } = new List<AppRole>();
-}
+public sealed record GetAllRolesQueryResponse(IList<AppRole> Roles);

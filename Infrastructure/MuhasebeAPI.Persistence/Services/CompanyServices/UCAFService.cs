@@ -24,7 +24,7 @@ public sealed class UCAFService : IUCAFService
         _mapper = mapper;
     }
 
-    public async Task CreateUcafAsync(CreateUCAFRequest request)
+    public async Task CreateUcafAsync(CreateUCAFCommandRequest request)
     {
         CompanyDbContext _context = (CompanyDbContext)_contextService.CreateDbContextInstance(request.CompanyId ?? string.Empty);
         _commandRepository.SetDbContextInstance(_context);

@@ -1,19 +1,19 @@
-﻿using MediatR;
+﻿using MuhasebeAPI.Application.Messaging.Command;
 using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Domain.Entities.App;
 
 namespace MuhasebeAPI.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany;
 
-public sealed class CreateCompanyHandler : IRequestHandler<CreateCompanyRequest, CreateCompanyResponse>
+public sealed class CreateCompanyCommandHandler : ICommandHandler<CreateCompanyCommandRequest, CreateCompanyCommandResponse>
 {
     private readonly ICompanyService _companyService;
 
-    public CreateCompanyHandler(ICompanyService companyService)
+    public CreateCompanyCommandHandler(ICompanyService companyService)
     {
         _companyService = companyService;
     }
 
-    public async Task<CreateCompanyResponse> Handle(CreateCompanyRequest request, CancellationToken cancellationToken)
+    public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
     {
         Company? company = await _companyService.GetCompanyByName(request.Name ?? string.Empty);
 

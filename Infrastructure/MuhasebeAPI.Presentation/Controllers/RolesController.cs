@@ -15,30 +15,30 @@ public class RolesController : ApiController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> CreateRole(CreateRoleRequest request)
+    public async Task<IActionResult> CreateRole(CreateRoleCommandRequest request)
     {
-        CreateRoleResponse response = await _mediator.Send(request);
+        CreateRoleCommandResponse response = await _mediator.Send(request);
         return Ok(response);
     }
 
     [HttpGet("[action]")]
     public async Task<IActionResult> GetlAllRoles()
     {
-        GetAllRolesResponse response = await _mediator.Send(new GetAllRolesRequest());
+        GetAllRolesQueryResponse response = await _mediator.Send(new GetAllRolesQueryRequest());
         return Ok(response);
     }
 
     [HttpPut("[action]")]
     public async Task<IActionResult> UpdateRole(UpdateRoleRequest request)
     {
-        UpdateRoleResponse response = await _mediator.Send(request);
+        UpdateRoleCommandResponse response = await _mediator.Send(request);
         return Ok(response);
     }
 
     [HttpDelete("[action]/{id}")]
     public async Task<IActionResult> DeleteRole(string id)
     {
-        DeleteRoleResponse response = await _mediator.Send(new DeleteRoleRequest(id));
+        DeleteRoleCommandResponse response = await _mediator.Send(new DeleteRoleCommandRequest(id));
         return Ok(response);
     }
 }
