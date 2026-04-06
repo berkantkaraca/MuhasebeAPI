@@ -23,13 +23,13 @@ public class CompanyService : ICompanyService
         _mapper = mapper;
     }
 
-    public async Task CreateCompany(CreateCompanyCommandRequest request)
+    public async Task CreateCompany(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
     {
         Company company = _mapper.Map<Company>(request);
         company.Id = Guid.NewGuid().ToString();
 
-        await _context.Set<Company>().AddAsync(company);
-        await _context.SaveChangesAsync();
+        await _context.Set<Company>().AddAsync(company, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<Company?> GetCompanyByName(string name)

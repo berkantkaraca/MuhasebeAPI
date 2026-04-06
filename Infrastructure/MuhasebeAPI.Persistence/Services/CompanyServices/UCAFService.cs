@@ -24,7 +24,7 @@ public sealed class UCAFService : IUCAFService
         _mapper = mapper;
     }
 
-    public async Task CreateUcafAsync(CreateUCAFCommandRequest request)
+    public async Task CreateUcafAsync(CreateUCAFCommandRequest request, CancellationToken cancellationToken)
     {
         CompanyDbContext _context = (CompanyDbContext)_contextService.CreateDbContextInstance(request.CompanyId ?? string.Empty);
         _commandRepository.SetDbContextInstance(_context);
@@ -33,7 +33,7 @@ public sealed class UCAFService : IUCAFService
         UniformChartOfAccount uniformChartOfAccount = _mapper.Map<UniformChartOfAccount>(request);
         uniformChartOfAccount.Id = Guid.NewGuid().ToString();
 
-        await _commandRepository.AddAsync(uniformChartOfAccount);
-        await _unitOfWork.SaveChangesAsync();
+        await _commandRepository.AddAsync(uniformChartOfAccount, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 }

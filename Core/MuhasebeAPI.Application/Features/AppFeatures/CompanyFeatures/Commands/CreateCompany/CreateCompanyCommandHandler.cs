@@ -1,4 +1,5 @@
-﻿using MuhasebeAPI.Application.Messaging.Command;
+﻿using MuhasebeAPI.Application.Exceptions;
+using MuhasebeAPI.Application.Messaging.Command;
 using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Domain.Entities.App;
 
@@ -18,10 +19,9 @@ public sealed class CreateCompanyCommandHandler : ICommandHandler<CreateCompanyC
         Company? company = await _companyService.GetCompanyByName(request.Name ?? string.Empty);
 
         if (company != null) 
-            throw new Exception("Bu şirket adı daha önce kullanılmış!");
+            throw new ConflictException("Bu şirket adı daha önce kullanılmış!");
 
-        await _companyService.CreateCompany(request);
+        await _companyService.CreateCompany(request, cancellationToken);
         return new();
     }
 }
-

@@ -12,9 +12,9 @@ public sealed class UCAFsController : ApiController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> CreateUCAF(CreateUCAFCommandRequest request)
+    public async Task<IActionResult> CreateUCAF(CreateUCAFCommandRequest request, CancellationToken cancellationToken)
     {
-        CreateUCAFCommandResponse response = await _mediator.Send(request);
+        CreateUCAFCommandResponse response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
     }
 }

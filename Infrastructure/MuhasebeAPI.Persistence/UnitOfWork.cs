@@ -10,5 +10,5 @@ public sealed class UnitOfWork : IUnitOfWork
 
     public void SetDbContextInstance(DbContext context) => _context = (CompanyDbContext)context;
 
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken) => await _context.SaveChangesAsync(cancellationToken);
 }

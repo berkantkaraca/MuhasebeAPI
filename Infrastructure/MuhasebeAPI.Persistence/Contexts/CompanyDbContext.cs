@@ -13,7 +13,7 @@ public sealed class CompanyDbContext : DbContext
     {
         if (company != null)
         {
-            if (company.UserId == "")
+            if (company.ServerUserId == "")
                 ConnectionString = $"" +
                     $"Data Source={company.ServerName};" +
                     $"Initial Catalog={company.DatabaseName};" +
@@ -27,8 +27,8 @@ public sealed class CompanyDbContext : DbContext
                 ConnectionString = $"" +
                     $"Data Source={company.ServerName};" +
                     $"Initial Catalog={company.DatabaseName};" +
-                    $"User Id={company.UserId};" +
-                    $"Password={company.Password};" +
+                    $"User Id={company.ServerUserId};" +
+                    $"Password={company.ServerPassword};" +
                     $"Integrated Security=True;" +
                     $"Connect Timeout=30;" +
                     $"Encrypt=False;" +

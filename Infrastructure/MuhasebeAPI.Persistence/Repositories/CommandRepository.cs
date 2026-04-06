@@ -16,9 +16,9 @@ public class CommandRepository<T> : ICommandRepository<T> where T : BaseEntity
         Table = _context.Set<T>();
     }
 
-    public async Task AddAsync(T entity) => await Table.AddAsync(entity);
+    public async Task AddAsync(T entity, CancellationToken cancellationToken) => await Table.AddAsync(entity, cancellationToken);
 
-    public async Task AddRangeAsync(IEnumerable<T> entities) => await Table.AddRangeAsync(entities);
+    public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken) => await Table.AddRangeAsync(entities, cancellationToken);
 
     public void Update(T entity) => Table.Update(entity);
 
