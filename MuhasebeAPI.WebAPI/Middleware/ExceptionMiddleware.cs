@@ -37,10 +37,10 @@ public class ExceptionMiddleware
 
         switch (exception)
         {
-            case ValidationException validationEx:
+            case ValidationException e:
                 statusCode = (int)HttpStatusCode.BadRequest;
                 message = "Validasyon hataları oluştu.";
-                errors = validationEx.Errors.Select(e => $"{e.PropertyName}: {e.ErrorMessage}").ToList();
+                errors = e.Errors.Select(e => $"{e.PropertyName}: {e.ErrorMessage}").ToList();
                 break;
 
             case NotFoundException e:

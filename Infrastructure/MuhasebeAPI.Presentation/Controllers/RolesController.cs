@@ -29,7 +29,7 @@ public class RolesController : ApiController
     }
 
     [HttpPut("[action]")]
-    public async Task<IActionResult> UpdateRole(UpdateRoleRequest request)
+    public async Task<IActionResult> UpdateRole(UpdateRoleCommandRequest request)
     {
         UpdateRoleCommandResponse response = await _mediator.Send(request);
         return Ok(response);

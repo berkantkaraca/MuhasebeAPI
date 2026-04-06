@@ -15,7 +15,7 @@ public class CompaniesController : ApiController
     [HttpPost("[action]")]
     public async Task<IActionResult> CreateCompany(CreateCompanyCommandRequest request)
     {
-        CreateCompanyResponse response = await _mediator.Send(request);
+        CreateCompanyCommandResponse response = await _mediator.Send(request);
         return Ok(response);
     }
 
@@ -24,8 +24,5 @@ public class CompaniesController : ApiController
     {
         MigrateCompanyDatabasesCommandResponse response = await _mediator.Send(new MigrateCompanyDatabasesCommandRequest());
         return Ok(response);
-
     }
-
 }
-
