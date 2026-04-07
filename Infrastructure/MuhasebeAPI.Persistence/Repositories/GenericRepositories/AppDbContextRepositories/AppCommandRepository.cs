@@ -1,18 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MuhasebeAPI.Application.Repositories;
+using MuhasebeAPI.Application.Repositories.GenericRepositories.AppDbContextRepositories;
 using MuhasebeAPI.Domain.Abstractions;
 using MuhasebeAPI.Persistence.Contexts;
 
-namespace MuhasebeAPI.Persistence.Repositories;
+namespace MuhasebeAPI.Persistence.Repositories.GenericRepositories.AppDbContextRepositories;
 
-public class CommandRepository<T> : ICommandRepository<T> where T : BaseEntity
+public class AppCommandRepository<T> : IAppCommandRepository<T>
+    where T : BaseEntity
 {
-    private CompanyDbContext _context = null!;
+    private readonly AppDbContext _context;
     public DbSet<T> Table { get; set; } = null!;
 
-    public void SetDbContextInstance(DbContext context)
-    { 
-        _context = (CompanyDbContext)context;
+    public AppCommandRepository(AppDbContext context)
+    {
+        _context = context;
         Table = _context.Set<T>();
     }
 
@@ -22,8 +23,7 @@ public class CommandRepository<T> : ICommandRepository<T> where T : BaseEntity
 
     public void Update(T entity) => Table.Update(entity);
 
-    public void UpdateRange(IEnumerable<T> entities) =>  Table.UpdateRange(entities);
-
+    public void UpdateRange(IEnumerable<T> entities) => Table.UpdateRange(entities);
     public void Remove(T entity) => Table.Remove(entity);
 
     public async Task RemoveAsync(string id)
@@ -34,7 +34,7 @@ public class CommandRepository<T> : ICommandRepository<T> where T : BaseEntity
             Remove(entity);
     }
 
-    public void RemoveRange(IEnumerable<T> entities) =>Table.RemoveRange(entities);
+    public void RemoveRange(IEnumerable<T> entities) => Table.RemoveRange(entities);
 
     public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
 }

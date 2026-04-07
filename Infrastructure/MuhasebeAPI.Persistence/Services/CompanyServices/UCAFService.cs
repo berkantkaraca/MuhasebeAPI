@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using MuhasebeAPI.Application;
 using MuhasebeAPI.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF;
-using MuhasebeAPI.Application.Repositories.UCAFRepositories;
+using MuhasebeAPI.Application.Repositories.CompanyDbContextRepositories.UCAFRepositories;
 using MuhasebeAPI.Application.Services;
 using MuhasebeAPI.Application.Services.CompanyServices;
+using MuhasebeAPI.Application.UnitOfWorks;
 using MuhasebeAPI.Domain.Entities.Company;
 using MuhasebeAPI.Persistence.Contexts;
 
@@ -14,10 +14,10 @@ public sealed class UCAFService : IUCAFService
     private readonly IUCAFCommandRepository _commandRepository;
     private readonly IUCAFQueryRepository _queryRepository;
     private readonly IContextService _contextService;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ICompanyDbUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, IUnitOfWork unitOfWork, IMapper mapper, IUCAFQueryRepository queryRepository)
+    public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, ICompanyDbUnitOfWork unitOfWork, IMapper mapper, IUCAFQueryRepository queryRepository)
     {
         _commandRepository = commandRepository;
         _contextService = contextService;
@@ -39,7 +39,6 @@ public sealed class UCAFService : IUCAFService
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
-
     public async Task<UniformChartOfAccount> GetByCode(string code) 
-        => (await _queryRepository.GetFirstByExpiression(p => p.Code == code))!;
+        => (await _queryRepository.GetFirstByExpiressionAsync(p => p.Code == code))!;
 }

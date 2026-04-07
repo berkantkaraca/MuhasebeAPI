@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MuhasebeAPI.Application.Repositories;
+using MuhasebeAPI.Application.Repositories.GenericRepositories.CompanyDbContextRepositories;
 using MuhasebeAPI.Domain.Abstractions;
 using MuhasebeAPI.Persistence.Contexts;
 using System.Linq.Expressions;
 
-namespace MuhasebeAPI.Persistence.Repositories;
+namespace MuhasebeAPI.Persistence.Repositories.GenericRepositories.CompanyDbContextRepositories;
 
-public class QueryRepository<T> : IQueryRepository<T> where T : BaseEntity
+public class CompanyDbQueryRepository<T> : ICompanyDbQueryRepository<T>
+    where T : BaseEntity
 {
     private CompanyDbContext _context = null!;
     public DbSet<T> Table { get; set; } = null!;
@@ -57,7 +58,7 @@ public class QueryRepository<T> : IQueryRepository<T> where T : BaseEntity
         return await query.FirstOrDefaultAsync();
     }
 
-    public async Task<T?> GetFirstByExpiression(Expression<Func<T, bool>> expression, bool tracking = true)
+    public async Task<T?> GetFirstByExpiressionAsync(Expression<Func<T, bool>> expression, bool tracking = true)
     {
         var query = Table.AsQueryable();
 

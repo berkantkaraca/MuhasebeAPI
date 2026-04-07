@@ -1,0 +1,9 @@
+﻿using MuhasebeAPI.Application.Repositories.CompanyDbContextRepositories.UCAFRepositories;
+using MuhasebeAPI.Domain.Entities.Company;
+using MuhasebeAPI.Persistence.Repositories.GenericRepositories.CompanyDbContextRepositories;
+
+namespace MuhasebeAPI.Persistence.Repositories.CompanyDbContextRepositories.UCAFRepositories;
+
+public sealed class UCAFQueryRepository : CompanyDbQueryRepository<UniformChartOfAccount>, IUCAFQueryRepository
+{
+}

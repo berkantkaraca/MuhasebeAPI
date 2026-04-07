@@ -1,8 +1,8 @@
 ﻿using MuhasebeAPI.Domain.Abstractions;
 
-namespace MuhasebeAPI.Application.Repositories;
+namespace MuhasebeAPI.Application.Repositories.GenericRepositories;
 
-public interface ICommandRepository<T> : IRepository<T> where T : BaseEntity
+public interface ICommandRepository<T> where T : BaseEntity
 {
     Task AddAsync(T entity, CancellationToken cancellationToken);
     Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken);

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MuhasebeAPI.Domain.Abstractions;
 
-namespace MuhasebeAPI.Application.Repositories;
+namespace MuhasebeAPI.Application.Repositories.GenericRepositories;
 
 public interface IRepository<T> where T : BaseEntity
 {
-    void SetDbContextInstance(DbContext context);
     DbSet<T> Table  { get; set; }
 }
+ 

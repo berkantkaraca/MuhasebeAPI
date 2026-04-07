@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MuhasebeAPI.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF;
 using MuhasebeAPI.Presentation.Abstraction;
 
-namespace OnlineMuhasebeServer.Presentation.Controller;
+namespace MuhasebeAPI.Presentation.Controllers;
 
 public sealed class UCAFsController : ApiController
 {
