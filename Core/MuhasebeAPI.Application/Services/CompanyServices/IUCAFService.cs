@@ -6,5 +6,5 @@ namespace MuhasebeAPI.Application.Services.CompanyServices;
 public interface IUCAFService
 {
     Task CreateUcafAsync(CreateUCAFCommandRequest request, CancellationToken cancellationToken);
-    Task<UniformChartOfAccount> GetByCode(string code);
+    Task<UniformChartOfAccount> GetByCode(string code, CancellationToken cancellationToken);
 }

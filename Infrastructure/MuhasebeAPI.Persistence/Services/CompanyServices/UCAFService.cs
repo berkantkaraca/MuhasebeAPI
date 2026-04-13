@@ -39,6 +39,6 @@ public sealed class UCAFService : IUCAFService
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<UniformChartOfAccount> GetByCode(string code) 
-        => (await _queryRepository.GetFirstByExpiressionAsync(p => p.Code == code))!;
+    public async Task<UniformChartOfAccount> GetByCode(string code, CancellationToken cancellationToken) 
+        => (await _queryRepository.GetFirstByExpiressionAsync(p => p.Code == code, cancellationToken))!;
 }

@@ -7,5 +7,6 @@ public interface ICompanyService
 {
     Task CreateCompany(CreateCompanyCommandRequest request, CancellationToken cancellationToken);
     Task MigrateCompanyDatabases();
-    Task<Company?> GetCompanyByName(string name);
+    Task<Company?> GetCompanyByNameAsync(string name, CancellationToken cancellationToken);
+    IQueryable<Company> GetAll();
 }

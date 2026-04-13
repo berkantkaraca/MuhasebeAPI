@@ -19,4 +19,3 @@ public sealed class GetAllRolesQueryHandler : IQueryHander<GetAllRolesQueryReque
         return new GetAllRolesQueryResponse(Roles: roles);
     }
 }
-

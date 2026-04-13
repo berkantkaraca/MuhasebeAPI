@@ -16,7 +16,7 @@ public sealed class CreateCompanyCommandHandler : ICommandHandler<CreateCompanyC
 
     public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
     {
-        Company? company = await _companyService.GetCompanyByName(request.Name ?? string.Empty);
+        Company? company = await _companyService.GetCompanyByNameAsync(request.Name, cancellationToken);
 
         if (company != null) 
             throw new ConflictException("Bu şirket adı daha önce kullanılmış!");

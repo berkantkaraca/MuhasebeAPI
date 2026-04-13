@@ -58,13 +58,13 @@ public class AppQueryRepository<T> : IAppQueryRepository<T>
         return await query.FirstOrDefaultAsync();
     }
 
-    public async Task<T?> GetFirstByExpiressionAsync(Expression<Func<T, bool>> expression, bool tracking = true)
+    public async Task<T?> GetFirstByExpiressionAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken, bool tracking = true)
     {
         var query = Table.AsQueryable();
 
         if (!tracking)
             query = query.AsNoTracking();
 
-        return await query.FirstOrDefaultAsync(expression);
+        return await query.FirstOrDefaultAsync(expression, cancellationToken);
     }
 }

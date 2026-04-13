@@ -4,7 +4,7 @@ using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Domain.Entities.App.Identity;
 using Shouldly;
 
-namespace MuhasebeAPI.UnitTest.Features.AppFeatures.RoleFeatures.Commands;
+namespace MuhasebeAPI.UnitTest.Features.AppFeatures.RoleFeatures;
 
 public sealed class UpdateRoleCommandUnitTest
 {

@@ -16,7 +16,7 @@ public sealed class CreateUCAFCommandHandler : ICommandHandler<CreateUCAFCommand
 
     public async Task<CreateUCAFCommandResponse> Handle(CreateUCAFCommandRequest request, CancellationToken cancellationToken)
     {
-        UniformChartOfAccount ucaf = await _ucafService.GetByCode(request.Code);
+        UniformChartOfAccount ucaf = await _ucafService.GetByCode(request.Code, cancellationToken);
 
         if (ucaf != null)
             throw new ConflictException("Bu hesap planı kodu daha önce tanımlanmış!");

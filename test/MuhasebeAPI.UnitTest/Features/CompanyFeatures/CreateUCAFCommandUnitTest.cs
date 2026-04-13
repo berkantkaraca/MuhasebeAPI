@@ -4,7 +4,7 @@ using MuhasebeAPI.Application.Services.CompanyServices;
 using MuhasebeAPI.Domain.Entities.Company;
 using Shouldly;
 
-namespace MuhasebeAPI.UnitTest.Features.CompanyFeatures.UCAFFeatures.Commands;
+namespace MuhasebeAPI.UnitTest.Features.CompanyFeatures;
 
 public sealed class CreateUCAFCommandUnitTest
 {
@@ -18,7 +18,7 @@ public sealed class CreateUCAFCommandUnitTest
     [Fact]
     public async Task UCAFShouldBeNull()
     {
-        UniformChartOfAccount ucaf = await _ucafService.Object.GetByCode("100.01.001");
+        UniformChartOfAccount ucaf = await _ucafService.Object.GetByCode("100.01.001", default);
         ucaf.ShouldBeNull();
     }
 

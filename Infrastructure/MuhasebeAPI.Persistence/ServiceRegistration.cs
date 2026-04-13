@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.CompanyRepositories;
+using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleReporistories;
 using MuhasebeAPI.Application.Repositories.CompanyDbContextRepositories.UCAFRepositories;
 using MuhasebeAPI.Application.Services;
 using MuhasebeAPI.Application.Services.AppServices;
@@ -11,6 +12,7 @@ using MuhasebeAPI.Domain.Entities.App.Identity;
 using MuhasebeAPI.Persistence.Contexts;
 using MuhasebeAPI.Persistence.Mapping;
 using MuhasebeAPI.Persistence.Repositories.AppDbContextRepositories.CompanyRepositories;
+using MuhasebeAPI.Persistence.Repositories.AppDbContextRepositories.MainRoleRepositories;
 using MuhasebeAPI.Persistence.Repositories.CompanyDbContextRepositories.UCAFRepositories;
 using MuhasebeAPI.Persistence.Services;
 using MuhasebeAPI.Persistence.Services.AppServices;
@@ -40,10 +42,13 @@ public static class ServiceRegistration
         services.AddScoped<IUCAFService, UCAFService>();
         services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IMainRoleService, MainRoleService>();
 
         services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();
         services.AddScoped<IUCAFQueryRepository, UCAFQueryRepository>();
         services.AddScoped<ICompanyCommandRepository, CompanyCommandRepository>();
         services.AddScoped<ICompanyQueryRepository, CompanyQueryRepository>();
+        services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
+        services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
     }
 }

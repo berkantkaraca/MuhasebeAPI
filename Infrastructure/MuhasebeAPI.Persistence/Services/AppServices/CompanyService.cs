@@ -23,6 +23,9 @@ public class CompanyService : ICompanyService
         _appUnitOfWork = appUnitOfWork;
     }
 
+    public IQueryable<Company> GetAll()
+        => _companyQueryRepository.GetAll();
+
     public async Task CreateCompany(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
     {
         Company company = _mapper.Map<Company>(request);
@@ -32,10 +35,8 @@ public class CompanyService : ICompanyService
         await _appUnitOfWork.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<Company?> GetCompanyByName(string name)
-    {
-        return await _companyQueryRepository.GetFirstByExpiressionAsync(p => p.Name == name);
-    }
+    public async Task<Company?> GetCompanyByNameAsync(string name, CancellationToken cancellationToken)
+        => await _companyQueryRepository.GetFirstByExpiressionAsync(p => p.Name == name, cancellationToken, false);
 
     public async Task MigrateCompanyDatabases()
     {

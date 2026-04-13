@@ -1,4 +1,5 @@
-﻿using MuhasebeAPI.Domain.Entities.App.Identity;
+﻿using MuhasebeAPI.Domain.Entities.App;
+using MuhasebeAPI.Domain.Entities.App.Identity;
 
 namespace MuhasebeAPI.Domain.Roles;
 
@@ -9,33 +10,26 @@ public sealed class RoleList
         List<AppRole> appRoles = new List<AppRole>
         {
             #region UCAF
-            new AppRole(
-                title: UCAF,
-                code: UCAFCreateCode,
-                name: UCAFCreateName
-            ),
-
-            new AppRole(
-                title: UCAF,
-                code: UCAFUpdateCode,
-                name: UCAFUpdateName
-            ),
-
-            new AppRole(
-                title: UCAF,
-                code: UCAFRemoveCode,
-                name: UCAFRemoveName
-            ),
-
-            new AppRole(
-                title: UCAF,
-                code: UCAFReadCode,
-                name: UCAFReadName
-            )
+            new AppRole(title: UCAF, code: UCAFCreateCode, name: UCAFCreateName),
+            new AppRole(title: UCAF, code: UCAFUpdateCode, name: UCAFUpdateName),
+            new AppRole(title: UCAF, code: UCAFRemoveCode, name: UCAFRemoveName),
+            new AppRole(title: UCAF, code: UCAFReadCode, name: UCAFReadName)
             #endregion
         };
 
         return appRoles;
+    }
+
+    public static List<MainRole> GetStaticMainRoles()
+    {
+        List<MainRole> mainRoles = new List<MainRole>
+        {
+            new MainRole(Guid.NewGuid().ToString(), "Admin", true),
+            new MainRole(Guid.NewGuid().ToString(), "Yönetici", true),
+            new MainRole(Guid.NewGuid().ToString(), "Kullanıcı", true),
+        };
+
+        return mainRoles;
     }
 
     #region RoleTitleNames

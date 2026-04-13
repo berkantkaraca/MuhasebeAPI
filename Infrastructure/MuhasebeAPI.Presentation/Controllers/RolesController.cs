@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateAllRoles;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
+using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.CreateStaticRoles;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.DeleteRole;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole;
 using MuhasebeAPI.Application.Features.AppFeatures.RoleFeatures.Queries.GetAllRoles;
@@ -23,9 +23,9 @@ public class RolesController : ApiController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> CreateAllRoles()
+    public async Task<IActionResult> CreateStaticRoles()
     {
-        CreateAllRolesCommandResponse response = await _mediator.Send(new CreateAllRolesCommandRequest());
+        CreateStaticRolesCommandResponse response = await _mediator.Send(new CreateStaticRolesCommandRequest());
         return Ok(response);
     }
 

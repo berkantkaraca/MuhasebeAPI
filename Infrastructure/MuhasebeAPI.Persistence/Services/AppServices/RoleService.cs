@@ -33,14 +33,10 @@ public class RoleService : IRoleService
     }
 
     public async Task DeleteAsync(AppRole appRole)
-    {
-        await _roleManager.DeleteAsync(appRole);
-    }
+        => await _roleManager.DeleteAsync(appRole);
 
     public async Task<IList<AppRole>> GetAllRolesAsync()
-    {
-        return await _roleManager.Roles.ToListAsync();
-    }
+        => await _roleManager.Roles.ToListAsync();
 
     public async Task<AppRole?> GetByCode(string code)
     {
@@ -55,7 +51,5 @@ public class RoleService : IRoleService
     }
 
     public async Task UpdateAsync(AppRole appRole)
-    {
-        await _roleManager.UpdateAsync(appRole);
-    }
+        => await _roleManager.UpdateAsync(appRole);
 }

@@ -4,7 +4,7 @@ using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Domain.Entities.App;
 using Shouldly;
 
-namespace MuhasebeAPI.UnitTest.Features.AppFeatures.CompanyFeatures.Commands;
+namespace MuhasebeAPI.UnitTest.Features.AppFeatures.CompanyFeatures;
 
 public sealed class CreateCompanyCommandUnitTest
 {
@@ -18,7 +18,7 @@ public sealed class CreateCompanyCommandUnitTest
     [Fact]
     public async Task CompanyShouldBeNull()
     {
-        Company company = (await _companyService.Object.GetCompanyByName("Karaca Ltd Şti"))!;
+        Company company = (await _companyService.Object.GetCompanyByNameAsync("Karaca Ltd Şti", default))!;
         company.ShouldBeNull();
     }
 
