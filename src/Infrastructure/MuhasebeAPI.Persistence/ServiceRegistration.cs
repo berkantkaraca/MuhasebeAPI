@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.CompanyRepositories;
-using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleReporistories;
+using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleRepositories;
 using MuhasebeAPI.Application.Repositories.CompanyDbContextRepositories.UCAFRepositories;
 using MuhasebeAPI.Application.Services;
 using MuhasebeAPI.Application.Services.AppServices;

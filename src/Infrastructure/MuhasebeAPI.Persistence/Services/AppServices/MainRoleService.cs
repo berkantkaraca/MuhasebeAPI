@@ -1,4 +1,4 @@
-﻿using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleReporistories;
+﻿using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleRepositories;
 using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Application.UnitOfWorks;
 using MuhasebeAPI.Domain.Entities.App;
