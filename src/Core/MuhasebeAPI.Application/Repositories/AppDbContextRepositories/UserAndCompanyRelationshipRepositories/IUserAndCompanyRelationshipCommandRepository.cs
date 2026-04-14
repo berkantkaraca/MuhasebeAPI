@@ -1,0 +1,9 @@
+using MuhasebeAPI.Domain.Entities.App;
+using MuhasebeAPI.Application.Repositories.GenericRepositories.AppDbContextRepositories;
+
+namespace MuhasebeAPI.Application.Repositories.AppDbContextRepositories.UserAndCompanyRelationshipRepositories;
+
+public interface IUserAndCompanyRelationshipCommandRepository : IAppCommandRepository<UserAndCompanyRelationship>
+{
+
+}

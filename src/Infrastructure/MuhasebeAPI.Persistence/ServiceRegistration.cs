@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.CompanyRepositories;
@@ -18,6 +18,12 @@ using MuhasebeAPI.Persistence.Services;
 using MuhasebeAPI.Persistence.Services.AppServices;
 using MuhasebeAPI.Persistence.Services.CompanyServices;
 using MuhasebeAPI.Persistence.UnitOfWorks;
+using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleAndRoleRelationshipRepositories;
+using MuhasebeAPI.Persistence.Repositories.AppDbContextRepositories.MainRoleAndRoleRelationshipRepositories;
+using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleAndUserRelationshipRepositories;
+using MuhasebeAPI.Persistence.Repositories.AppDbContextRepositories.MainRoleAndUserRelationshipRepositories;
+using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.UserAndCompanyRelationshipRepositories;
+using MuhasebeAPI.Persistence.Repositories.AppDbContextRepositories.UserAndCompanyRelationshipRepositories;
 //UsingSpot
 
 namespace MuhasebeAPI.Persistence;
@@ -46,6 +52,9 @@ public static class ServiceRegistration
         services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<IMainRoleService, MainRoleService>();
+        services.AddScoped<IMainRoleAndRoleRelationshipService, MainRoleAndRoleRelationshipService>();
+        services.AddScoped<IMainRoleAndUserRelationshipService, MainRoleAndUserRelationshipService>();
+        services.AddScoped<IUserAndCompanyRelationshipService, UserAndCompanyRelationshipService>();
         //AppServiceDISpot
 
         services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();
@@ -56,6 +65,12 @@ public static class ServiceRegistration
         services.AddScoped<ICompanyQueryRepository, CompanyQueryRepository>();
         services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
         services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
+        services.AddScoped<IMainRoleAndRoleRelationshipCommandRepository, MainRoleAndRoleRelationshipCommandRepository>();
+        services.AddScoped<IMainRoleAndRoleRelationshipQueryRepository, MainRoleAndRoleRelationshipQueryRepository>();
+        services.AddScoped<IMainRoleAndUserRelationshipCommandRepository, MainRoleAndUserRelationshipCommandRepository>();
+        services.AddScoped<IMainRoleAndUserRelationshipQueryRepository, MainRoleAndUserRelationshipQueryRepository>();
+        services.AddScoped<IUserAndCompanyRelationshipCommandRepository, UserAndCompanyRelationshipCommandRepository>();
+        services.AddScoped<IUserAndCompanyRelationshipQueryRepository, UserAndCompanyRelationshipQueryRepository>();
         //AppRepositoryDISpot
     }
 }
