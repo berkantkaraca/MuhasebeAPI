@@ -18,6 +18,7 @@ using MuhasebeAPI.Persistence.Services;
 using MuhasebeAPI.Persistence.Services.AppServices;
 using MuhasebeAPI.Persistence.Services.CompanyServices;
 using MuhasebeAPI.Persistence.UnitOfWorks;
+//UsingSpot
 
 namespace MuhasebeAPI.Persistence;
 
@@ -40,15 +41,21 @@ public static class ServiceRegistration
         services.AddScoped<IContextService, ContextService>();
 
         services.AddScoped<IUCAFService, UCAFService>();
+        //CompanyServiceDISpot
+
         services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<IMainRoleService, MainRoleService>();
+        //AppServiceDISpot
 
         services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();
         services.AddScoped<IUCAFQueryRepository, UCAFQueryRepository>();
+        //CompanyRepositoryDISpot
+
         services.AddScoped<ICompanyCommandRepository, CompanyCommandRepository>();
         services.AddScoped<ICompanyQueryRepository, CompanyQueryRepository>();
         services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
         services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
+        //AppRepositoryDISpot
     }
 }
