@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -25,10 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Core\MuhasebeAPI.Application\MuhasebeAPI.Application.csproj" />
-	  <ProjectReference Include="..\..\Core\MuhasebeAPI.Domain\MuhasebeAPI.Domain.csproj" />
+	  <ProjectReference Include="..\..\src\Core\MuhasebeAPI.Application\MuhasebeAPI.Application.csproj" />
+	  <ProjectReference Include="..\..\src\Core\MuhasebeAPI.Domain\MuhasebeAPI.Domain.csproj" />
 	</ItemGroup>
-
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>

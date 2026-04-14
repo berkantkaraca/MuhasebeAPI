@@ -20,10 +20,10 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\MuhasebeAPI.Infrastructure\MuhasebeAPI.Infrastructure.csproj" />
-    <ProjectReference Include="..\Infrastructure\MuhasebeAPI.Persistence\MuhasebeAPI.Persistence.csproj" />
-    <ProjectReference Include="..\Infrastructure\MuhasebeAPI.Presentation\MuhasebeAPI.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Infrastructure\MuhasebeAPI.Infrastructure\MuhasebeAPI.Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\MuhasebeAPI.Persistence\MuhasebeAPI.Persistence.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\MuhasebeAPI.Presentation\MuhasebeAPI.Presentation.csproj" />
+	</ItemGroup>
 
 </Project>
