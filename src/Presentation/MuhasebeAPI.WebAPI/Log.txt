@@ -1,0 +1,6 @@
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/GetAllCompany
+
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/GetAllCompany
+
