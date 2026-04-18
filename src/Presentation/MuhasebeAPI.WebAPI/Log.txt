@@ -4,3 +4,27 @@ Yol(URL) => /api/Companies/GetAllCompany
 İstek atılan metod => GET
 Yol(URL) => /api/Companies/GetAllCompany
 
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/GetAllCompany
+
+İstek atılan metod => POST
+Yol(URL) => /api/Companies/CreateCompany
+
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/MigrateCompanyDatabases
+
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/GetAllCompany
+
+İstek atılan metod => POST
+Yol(URL) => /api/UserAndCompanyRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/UserAndCompanyRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/UserAndCompanyRelationships/Create
+
+İstek atılan metod => DELETE
+Yol(URL) => /api/UserAndCompanyRelationships/RemoveById
+
