@@ -55,6 +55,7 @@ public static class ServiceRegistration
         services.AddScoped<IMainRoleAndRoleRelationshipService, MainRoleAndRoleRelationshipService>();
         services.AddScoped<IMainRoleAndUserRelationshipService, MainRoleAndUserRelationshipService>();
         services.AddScoped<IUserAndCompanyRelationshipService, UserAndCompanyRelationshipService>();
+        services.AddScoped<IAuthService, AuthService>();
         //AppServiceDISpot
 
         services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();

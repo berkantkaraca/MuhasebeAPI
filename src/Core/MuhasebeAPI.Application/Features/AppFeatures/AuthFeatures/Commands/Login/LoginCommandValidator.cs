@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace MuhasebeAPI.Application.Features.AppFeatures.AppUserFeatures.Commands.Login;
+namespace MuhasebeAPI.Application.Features.AppFeatures.AuthFeatures.Commands.Login;
 
 public sealed class LoginCommandValidator : AbstractValidator<LoginCommandRequest>
 {
@@ -11,9 +11,10 @@ public sealed class LoginCommandValidator : AbstractValidator<LoginCommandReques
             .NotEmpty().WithMessage("Mail ya da kullanıcı adı yazmalısınız!");
 
         RuleFor(p => p.Password)
-            //.Cascade(CascadeMode.Stop) // İlk hata alındığında durur
             .NotNull()
-            .NotEmpty().WithMessage("Şifre boş olamaz")
+            .NotEmpty().WithMessage("Şifre boş olamaz");
+
+        RuleFor(p => p.Password)
             .MinimumLength(6).WithMessage("Şifre en az 6 karakter olmalıdır")
             .Matches("[A-Z]").WithMessage("Şifreniz en az 1 adet büyük harf içermelidir")
             .Matches("[a-z]").WithMessage("Şifreniz en az 1 adet küçük harf içermelidir")

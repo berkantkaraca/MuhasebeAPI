@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.MainRoleAndRoleRelationshipRepositories;
 using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Application.UnitOfWorks;
@@ -32,6 +33,9 @@ public class MainRoleAndRoleRelationshipService : IMainRoleAndRoleRelationshipSe
 
     public async Task<MainRoleAndRoleRelationship> GetByRoleIdAndMainRoleIdAsync(string roleId, string mainRoleId, CancellationToken cancellationToken = default)
         => await _queryRepository.GetFirstByExpiressionAsync(p => p.RoleId == roleId && p.MainRoleId == mainRoleId, cancellationToken);
+
+    public async Task<IList<MainRoleAndRoleRelationship>> GetListByMainRoleIdForGetRolesAsync(string id)
+        => await _queryRepository.GetWhere(p => p.MainRoleId == id).Include("AppRole").ToListAsync();
 
     public async Task RemoveByIdAsync(string id)
     {

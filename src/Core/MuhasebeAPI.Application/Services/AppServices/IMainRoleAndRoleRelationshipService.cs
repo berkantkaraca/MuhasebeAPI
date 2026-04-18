@@ -11,4 +11,5 @@ public interface IMainRoleAndRoleRelationshipService
     IQueryable<MainRoleAndRoleRelationship> GetAll();
     Task<MainRoleAndRoleRelationship> GetByIdAsync(string id);
     Task<MainRoleAndRoleRelationship> GetByRoleIdAndMainRoleIdAsync(string roleId, string mainRoleId, CancellationToken cancellationToken = default);
+    Task<IList<MainRoleAndRoleRelationship>> GetListByMainRoleIdForGetRolesAsync(string id);
 }

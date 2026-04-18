@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MuhasebeAPI.Application.Repositories.AppDbContextRepositories.UserAndCompanyRelationshipRepositories;
 using MuhasebeAPI.Application.Services.AppServices;
 using MuhasebeAPI.Application.UnitOfWorks;
@@ -29,6 +30,9 @@ public class UserAndCompanyRelationshipService : IUserAndCompanyRelationshipServ
 
     public async Task<UserAndCompanyRelationship> GetByUserIdAndCompanyIdAsync(string userId, string companyId, CancellationToken cancellationToken)
         => await _queryRepository.GetFirstByExpiressionAsync(p => p.AppUserId == userId && p.CompanyId == companyId, cancellationToken);
+
+    public async Task<IList<UserAndCompanyRelationship>> GetListByUserIdAsync(string userId)
+        => await _queryRepository.GetWhere(p => p.AppUserId == userId).Include("Company").ToListAsync();
 
     public async Task RemoveByIdAsync(string id)
     {

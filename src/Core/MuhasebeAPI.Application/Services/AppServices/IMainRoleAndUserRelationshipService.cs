@@ -9,5 +9,5 @@ public interface IMainRoleAndUserRelationshipService
     Task RemoveByIdAsync(string id);
     Task<MainRoleAndUserRelationship> GetByUserIdCompanyIdAndMainRoleIdAsync(string userId, string companyId, string mainRoleId, CancellationToken cancellationToken);
     Task<MainRoleAndUserRelationship> GetByIdAsync(string id, bool tracking);
-
+    Task<MainRoleAndUserRelationship> GetRolesByUserIdAndCompanyIdAsync(string userId, string companyId);
 }

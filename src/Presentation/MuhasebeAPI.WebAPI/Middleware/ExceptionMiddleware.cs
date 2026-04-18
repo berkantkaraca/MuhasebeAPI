@@ -61,6 +61,12 @@ public class ExceptionMiddleware
                 errors.Add("Mükerrer kayıt hatası.");
                 break;
 
+            case BadRequestException e:
+                statusCode = (int)HttpStatusCode.BadRequest;
+                message = e.Message;
+                errors.Add(e.Message);
+                break;
+
             default:
                 errors.Add(exception.Message);
                 break;

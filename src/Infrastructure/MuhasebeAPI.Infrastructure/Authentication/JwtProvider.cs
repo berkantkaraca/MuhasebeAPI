@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MuhasebeAPI.Application.Abstractions;
+using MuhasebeAPI.Application.Dtos;
 using MuhasebeAPI.Domain.Entities.App.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -21,14 +22,13 @@ namespace MuhasebeAPI.Infrastructure.Authentication
             _userManager = userManager;
         }
 
-        public async Task<string> CreateTokenAsync(AppUser user, List<string> roles)
+        public async Task<TokenRefreshTokenDto> CreateTokenAsync(AppUser user)
         {
             var claims = new Claim[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.NameLastName),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(ClaimTypes.Authentication, user.Id),
-                new Claim(ClaimTypes.Role, String.Join(",", roles))
+                new Claim(ClaimTypes.Authentication, user.Id)
             };
 
             DateTime expires = DateTime.Now.AddDays(1);
@@ -50,7 +50,7 @@ namespace MuhasebeAPI.Infrastructure.Authentication
 
             await _userManager.UpdateAsync(user);
 
-            return token;
+            return new(token, refreshToken, user.RefreshTokenExpires);
         }
     }
 }

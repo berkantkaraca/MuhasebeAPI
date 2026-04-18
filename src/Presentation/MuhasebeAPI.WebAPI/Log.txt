@@ -46,3 +46,30 @@ Yol(URL) => /api/MainRoleAndUserRelationships/RevmoveById
 İstek atılan metod => DELETE
 Yol(URL) => /api/MainRoleAndUserRelationships/RevmoveById
 
+İstek atılan metod => POST
+Yol(URL) => /api/Auth/Login
+
+İstek atılan metod => POST
+Yol(URL) => /api/Auth/GetRolesByUserIdAndCompanyId
+
+İstek atılan metod => POST
+Yol(URL) => /api/MainRoleAndUserRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/MainRoleAndUserRelationships/Create
+
+İstek atılan metod => GET
+Yol(URL) => /api/Companies/GetAllCompany
+
+İstek atılan metod => POST
+Yol(URL) => /api/MainRoleAndUserRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/Auth/GetRolesByUserIdAndCompanyId
+
+İstek atılan metod => POST
+Yol(URL) => /api/UserAndCompanyRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/Auth/Login
+
