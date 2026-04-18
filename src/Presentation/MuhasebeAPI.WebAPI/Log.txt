@@ -28,3 +28,21 @@ Yol(URL) => /api/UserAndCompanyRelationships/Create
 İstek atılan metod => DELETE
 Yol(URL) => /api/UserAndCompanyRelationships/RemoveById
 
+İstek atılan metod => GET
+Yol(URL) => /api/MainRoles/GetAll
+
+İstek atılan metod => POST
+Yol(URL) => /api/MainRoleAndUserRelationships/Create
+
+İstek atılan metod => POST
+Yol(URL) => /api/MainRoleAndUserRelationships/Create
+
+İstek atılan metod => DELETE
+Yol(URL) => /api/MainRoleAndUserRelationships/RevmoveById
+
+İstek atılan metod => DELETE
+Yol(URL) => /api/MainRoleAndUserRelationships/RevmoveById
+
+İstek atılan metod => DELETE
+Yol(URL) => /api/MainRoleAndUserRelationships/RevmoveById
+

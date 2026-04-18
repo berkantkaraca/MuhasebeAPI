@@ -1,0 +1,5 @@
+﻿using MuhasebeAPI.Application.Messaging.Command;
+
+namespace MuhasebeAPI.Application.Features.AppFeatures.MainRoleAndUserRLFeatures.Commands.RemoveByIdMainRoleAndUserRL;
+
+public sealed record RemoveByIdMainRoleAndUserRLCommandRequest(string Id): ICommand<RemoveByIdMainRoleAndUserRLCommandResponse>;
